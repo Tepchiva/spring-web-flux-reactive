@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1722680956285-1" author="admin" labels="web-flux-reactive">
+        <sqlFile
+                path="db/schema/table/1-create-table-user.sql"
+                stripComments="false"
+                splitStatements="true"
+        />
+    </changeSet>
+</databaseChangeLog>
