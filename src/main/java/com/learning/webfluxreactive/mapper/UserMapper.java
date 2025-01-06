@@ -16,14 +16,8 @@ public interface UserMapper {
     UserResponse toUserResponse(User user);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "salt", expression = "java(java.util.UUID.randomUUID().toString())")
-    @Mapping(target = "password", expression = "java(toHashPassword(userRequest.password(), user.getSalt()))")
     @Mapping(target = "username", expression = "java(generateUsername(userRequest))")
     User toUserModelCreation(UserRequest userRequest);
-
-    default String toHashPassword(String password, String salt) {
-        return password + salt;
-    }
 
     default String generateUsername(UserRequest userRequest) {
         String username = userRequest.firstName() + userRequest.lastName();

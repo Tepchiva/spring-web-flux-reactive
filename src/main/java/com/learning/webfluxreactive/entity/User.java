@@ -1,13 +1,11 @@
 package com.learning.webfluxreactive.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Table("iam_user")
-@Getter
-@Setter
+@Data
 public class User {
     @Id
     private Long id;
@@ -16,6 +14,5 @@ public class User {
     private String lastName;
     private String email;
     private String phone;
-    private String salt;
     private String password;
 }

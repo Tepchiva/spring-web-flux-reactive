@@ -6,6 +6,7 @@ import com.learning.webfluxreactive.entity.User;
 import com.learning.webfluxreactive.mapper.UserMapper;
 import com.learning.webfluxreactive.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -16,6 +17,7 @@ import java.time.Duration;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public Flux<UserResponse> retrieveUsers() {
         return userRepository.findAll().map(UserMapper.INSTANCE::toUserResponse).delayElements(Duration.ofSeconds(1)).log();
@@ -23,6 +25,7 @@ public class UserService {
 
     public Mono<UserResponse> createUser(UserRequest userRequest) {
         User user = UserMapper.INSTANCE.toUserModelCreation(userRequest);
+        user.setPassword(passwordEncoder.encode(userRequest.password()));
         return userRepository.save(user).map(UserMapper.INSTANCE::toUserResponse).log();
     }
 }
