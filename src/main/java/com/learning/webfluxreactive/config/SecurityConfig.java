@@ -22,11 +22,14 @@ public class SecurityConfig {
     SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http
                 .authorizeExchange(exchanges -> exchanges
-                        .pathMatchers("/v1/**")
-                        .permitAll()
-                        .anyExchange()
-                        .authenticated()
+                        .pathMatchers(
+                                "/v1/**"
+                        )
+                        .permitAll() // permit all for /v1/**
+                        .anyExchange() // any other request
+                        .authenticated() // must be authenticated
                 )
+                .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .httpBasic(withDefaults())
                 .formLogin(withDefaults())
         ;
