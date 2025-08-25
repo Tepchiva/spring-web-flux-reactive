@@ -12,5 +12,4 @@ public class TaskResponse {
     private String dueDate;
     private String createdAt;
     private String updatedAt;
-
 }
