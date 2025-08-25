@@ -18,13 +18,11 @@ import java.time.LocalDateTime;
 public class Task {
     @Id
     private Long id;
-
     private String title;
     private String description;
-    private TaskStatusEnum status;
-    private TaskPriorityEnum priority;
+    private String status;
+    private String priority;
     private LocalDate dueDate;
-
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

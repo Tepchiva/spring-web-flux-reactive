@@ -14,9 +14,9 @@ public class TaskService {
         return taskRepository.save(Task.builder()
                         .title(request.title())
                         .description(request.description())
-                        .status(TaskStatusEnum.PENDING)
+                        .status(TaskStatusEnum.PENDING.name())
+                        .priority(request.priority() != null ? request.priority().name() : null)
                         .dueDate(request.dueDate())
-                        .priority(request.priority())
                         .build()
                 )
                 .map(TaskMapper.INSTANCED::from);
