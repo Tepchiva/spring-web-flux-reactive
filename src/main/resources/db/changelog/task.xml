@@ -4,9 +4,9 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="1722680956285-1" author="admin" labels="web-flux-reactive">
+    <changeSet id="1756136188930-1" author="admin">
         <sqlFile
-                path="db/schema/table/1-create-table-user.sql"
+                path="db/schema/table/1-create-task-table.sql"
                 stripComments="false"
                 splitStatements="true"
         />
