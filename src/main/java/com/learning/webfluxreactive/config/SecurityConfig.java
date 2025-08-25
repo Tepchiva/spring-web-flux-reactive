@@ -18,13 +18,16 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebFluxSecurity
 public class SecurityConfig {
 
+    private static final String[] PUBLIC_URLS = {
+            "webjars/swagger-ui/**",
+            "v3/api-docs/**",
+    };
+
     @Bean
     SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http
                 .authorizeExchange(exchanges -> exchanges
-                        .pathMatchers(
-                                "/v1/**"
-                        )
+                        .pathMatchers(PUBLIC_URLS) // permit all for swagger
                         .permitAll() // permit all for /v1/**
                         .anyExchange() // any other request
                         .authenticated() // must be authenticated
